@@ -1,0 +1,27 @@
+/* podstawowe komendy git */
+- git init
+- git remote
+- git clone
+- git config
+- git branch
+- git diff
+- git add
+- git status
+- git commit
+- git pull
+- git push
+- git fetch
+- git log
+- git reset
+- git checkout
+- git revert
+- git merge
+
+
+/* podstawowe komendy bash */
+- ls
+- cd
+- mkdir
+- mv
+- pwd
+- cat
