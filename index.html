@@ -11,6 +11,16 @@
   <body ng-app='app'>
     <div ng-controller='PostsCtrl' class='container'>
 			<h1>Najnowsze posty</h1>
+			
+			<form role='form'>
+				<div class='form-group'>
+					<div class='input-group'>
+						<input ng-model='postBody' class='form-control' />
+						<span class='input-group-btn'><button ng-click='addPost()' class='btn btn-default'>Dodaj post</button></span>						
+					</div>
+				</div>
+			</form>
+
 			<ul class='list-group'>
 				<li ng-repeat='post in posts' class='list-group-item'>
 					<span class='list-header'>{{ post.username }}</span>
@@ -30,16 +40,26 @@
 		<script>
 			var app = angular.module('app',[]);
 			app.controller('PostsCtrl', function($scope){
-				$scope.posts = [
-					{
-						username: '@daffy',
-						body: 'Node rządzi'
-					},
-					{
-						username: '@jeff',
-						body: 'Testujemy angulara'
+				$scope.addPost = function(){
+					if($scope.postBody){
+						$scope.posts.unshift({
+							username: '@tessssst',
+							body: $scope.postBody
+						});	
 					}
-				]
+					$scope.postBody = null;					
+				};
+				//Dane poczatkowe 
+					$scope.posts = [
+						{
+							username: '@jeryxxxx',
+							body: 'Node rządzi'
+						},
+						{
+							username: '@hdsdsufus',
+							body: 'Testujemy angulara'
+						}
+					];
 			})
 		</script>
 
