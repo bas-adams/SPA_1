@@ -5,9 +5,43 @@
     <meta http-equiv="X-UA-Compaibile" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Posty osty</title>    
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   </head>
-  <body>
+  <body ng-app='app'>
+    <div ng-controller='PostsCtrl' class='container'>
+			<h1>Najnowsze posty</h1>
+			<ul class='list-group'>
+				<li ng-repeat='post in posts' class='list-group-item'>
+					<span class='list-header'>{{ post.username }}</span>
+					<span>{{ post.body }}</span>
+				</li>
+			</ul>
+    </div>
+    <div ng-controller='PostsCtrl'>
+    	{{posts}}
+    </div>
+    <div ng-controller='PostsCtrl'>
+    	{{posts[0].body}}
+    	{{posts[1].body}}
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     
-    <script src="js/main.js"></script>
+		<script>
+			var app = angular.module('app',[]);
+			app.controller('PostsCtrl', function($scope){
+				$scope.posts = [
+					{
+						username: '@daffy',
+						body: 'Node rządzi'
+					},
+					{
+						username: '@jeff',
+						body: 'Testujemy angulara'
+					}
+				]
+			})
+		</script>
+
   </body>
 </html>
