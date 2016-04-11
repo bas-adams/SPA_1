@@ -1,0 +1,6 @@
+Data-binding: is an automathic way of updating the view whenever the model changes, as well as updating the model whenever the view changes.
+
+Controller:
+
+Module:
+  - moduly wykorzystujemy w celu uzyskania dostepu do komponentow.
