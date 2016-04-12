@@ -4,3 +4,7 @@ Controller:
 
 Module:
   - moduly wykorzystujemy w celu uzyskania dostepu do komponentow.
+
+Scope - służy jako swoisty most łączący model z widokiem, lecz sam w sobie nie  posiada żadnych danych.
+
+Widok - odpowiada za prezenteacje danych oraz interakcję z użytkownikiem. Definiowany jest za pomocą czystego HTML-a oraz dyrektyw. Niezbędnych elementem umieszczanych w szablonie HTML jest "interpolacja". Jej zadaniem jest wyświtlanie pobiranego modelu. Tworzymy ją poprzez urzycie podwójnych nawiasów klamrowych {{}} 
