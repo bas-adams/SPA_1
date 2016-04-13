@@ -1,1 +1,70 @@
 
+<!doctype html>
+<html  ng-app='todoApp'>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compaibile" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Angular</title>    
+    <!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style type="text/css">
+      .done-true{
+        text-decoration: line-through;
+        color: #999999;
+      }
+      .done-false{
+        font-weight: bold;
+        color:#ff0000;
+      }
+    </style>
+  </head>
+  <body>
+    <div ng-controller='TodoCtrl' class='container'>
+    	<h2>Todal todos:{{getTotalTodos()}}</h2>
+      <ul class='list-group'>
+        <li ng-repeat='todo in todos' class='list-group-item'>
+          <input type='checkbox' ng-model='todo.done'>
+          <span class='done-{{todo.done}}'>{{todo.text}}</span>
+        </li>      
+      </ul>
+      <form class='form-horizontal'>
+        <input type='text' ng-model='formTodoText' ng-modle-instant >
+        <button class='btn' ng-click='addTodo()'><span class="glyphicon-plus" aria-hidden="true"></span> Add</button>        
+      </form>
+
+      <button class='btn-large' ng-click='clearComplited()'>Clear complited</button>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script type="text/javascript">
+    	var todoApp = angular.module('todoApp', []);
+        todoApp.controller('TodoCtrl', function($scope){
+          
+          $scope.todos = [
+            { text: 'Learn Angular', done: false },
+            { text: 'Build an app', done: false}
+          ]; 
+
+          
+          $scope.getTotalTodos = function(){
+            return $scope.todos.length; 
+          };
+
+          $scope.clearComplited = function(){
+            $scope.todos = _.filter($scope.todos, function(todo){
+              return !todo.done;
+            })
+          };
+
+          $scope.addTodo = function(){
+            $scope.todos.push({text:$scope.formTodoText, done: false});
+            $scope.formTodoText = '';
+          };
+
+        });
+
+    </script>
+  </body>
+</html>
+
