@@ -1,0 +1,25 @@
+function thisIsWeird() {
+
+  function secret() {
+    var unused3;
+    console.log('1st secret');
+  }
+
+  var result;
+
+  function secret() {
+    var unused1;
+    console.log('2nd secret');
+  }
+
+  result = secret;
+
+  function secret() {
+    var unused2;
+    console.log('3rd secret');
+  }
+
+  return result;
+}
+
+thisIsWeird()();
