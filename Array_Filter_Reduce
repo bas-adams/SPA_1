@@ -68,5 +68,33 @@ console.log(numbersSum); // 27
 
 Initially when the method reduce() traverses through a number array it will take the first value (2) of the array as the 'total' argument and the second value (7) as 'num'. The sum of the arguments (2 + 7) is returned (9) and is passed to the 'total' argument to use in the next iteration. The array’s third value (4) is assigned to the 'num' argument. Again, the sum of these two values is returned (9 + 4 = 13). ....  Because we don’t have any more values in the numbers array, we receive 27 as the result of the reduce() method. 
 ----------------------------
+the reduce() method optionally accepts a second argument as the initial value. Let’s repeat our example but with an initial value of 1000.
+so ....
+var numbersSum = numbers.reduce(function(){}, 1000);
+1)
+var numbersSum = numbers.reduce(function(total, num){
+  return total + num;
+}, 1000);
+console.log(numbersSum);// 1027
+2) ES 2015 version
+var numbersSum = numbers.reduce(((total, num) => total + num), 1000);
+console.log(numbersSum);// 1027
+Passing the optional initial value as a second argument slightly changes the previously described behavior. The difference is minor though. Initially it assigns 1000 to the total argument and the first value in the array (2) as the num argument. The pattern then continues identically.
 
+---------------------- Chain it together ------------------------------
+The beautiful thing about map() and filter() is the fact that an array goes in and an array comes out as a result of the method. This behaviour means we can chain these methods together with ease.
 
+Increasing number of 1 and simultaneously remove all the elements that are smaller than 5
+var numbers = [2, 7, 4, 9, 0, 5];
+1) map() and filter()
+var numbersNew = numbers.map(function(num){
+  return num + 1;
+}).filter(function(num){
+   return num >= 5;
+});
+console.log(numbersNew);// [8, 5, 10, 6]
+
+2) map() and filter() ES 2015 version 
+var numbersNew = numbers.map((num) => num + 1).filter((num) => num >= 5);
+
+console.log(numbersNew);// [8, 5, 10, 6]
