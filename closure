@@ -1,0 +1,32 @@
+Closures are functions that refer to independent (free) variables. In other words, the function defined in the closure 'remembers' the environment in which it was created.
+Note: free variables are variables that are neither locally declared nor passed as parameter.
+
+Example 1:
+function numberGenerator(){
+  //Local "free" variable that ends up within the closure
+  var num = 1;
+  function checkNumber(){
+    console.log(num);
+  }
+  num++;
+  return checkNumber;
+}
+
+var number = numberGenerator();
+number(); //2
+
+Function numberGenerator creates a local "free" variable num and checkNumber(a function which prints num to the consol). The function checkNumber doesn't have any local variables of its own - however, it does have access to the variables within the outer function, numberGenerator, because of closure.
+
+Example 2:
+function sayHello(){
+  var say = function(){
+    console.lg(hello);
+  };
+  //Local variable that ends up within the closure
+  var hello = 'Hello, world!';
+  return say;
+}
+
+var sayHelloClosure = sayHello();
+sayHelloClosure(); // Hello, world!
+
